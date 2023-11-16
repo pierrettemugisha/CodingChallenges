@@ -14,6 +14,8 @@ def wc(filename, option=None):
                 count = len(content)
             elif option == '-l':
                 count = content.count(b'\n')
+            elif option == '-w':
+                count = len(content.decode().split())
             else:
                 print(f'Invalid option {option}')
 
@@ -30,12 +32,15 @@ def main():
     parser.add_argument('filename', help='File to analyse')
     parser.add_argument('-c', '--byte-count', action='store_true', help='print the byte counts')
     parser.add_argument('-l', '--lines', action='store_true', help='print the byte counts')
+    parser.add_argument('-w', '--words', action='store_true', help='print the byte counts')
     args = parser.parse_args()
 
     if args.byte_count:
         wc(args.filename, '-c')
     elif args.lines:
         wc(args.filename, '-l')
+    elif args.words:
+        wc(args.filename, '-w')
 
 
 if __name__ == "__main__":
