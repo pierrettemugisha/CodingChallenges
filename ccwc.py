@@ -10,18 +10,23 @@ def wc(filename, option=None):
 
             content = file.read()
 
-            if option == '-c':
-                count = len(content)
-            elif option == '-l':
-                count = content.count(b'\n')
-            elif option == '-w':
-                count = len(content.decode().split())
-            elif option == '-m':
-                count = len(content.decode())
-            else:
-                print(f'Invalid option {option}')
+            byte_count = len(content)
+            lines_count = content.count(b'\n')
+            word_count = len(content.decode().split())
+            character_count = len(content.decode())
 
-            print(f'{count} {filename}')
+            if option == '-c':  # byte count
+                print(f'{byte_count} {filename}')
+            elif option == '-l':  # line count
+                print(f'{lines_count} {filename}')
+            elif option == '-w':  # word count
+                print(f'{word_count} {filename}')
+            elif option == '-m':  # characters count
+                print(f'{character_count} {filename}')
+            elif option is None:  # no option
+                print(f'{lines_count} {word_count} {byte_count} {filename}')
+            else:  # invalid option
+                print(f'Invalid option {option}')
 
     except FileNotFoundError:
         print(f'Error: File {filename} not found')
@@ -39,14 +44,18 @@ def main():
 
     args = parser.parse_args()
 
+    option = None
+
     if args.byte_count:
-        wc(args.filename, '-c')
+        option = '-c'
     elif args.lines:
-        wc(args.filename, '-l')
+        option = '-l'
     elif args.words:
-        wc(args.filename, '-w')
+        option = '-w'
     elif args.characters:
-        wc(args.filename, '-m')
+        option = '-m'
+
+    wc(args.filename, option)
 
 
 if __name__ == "__main__":
