@@ -38,9 +38,9 @@ def main():
     parser = argparse.ArgumentParser(description="Custom Word Count Tool")
     parser.add_argument('filename', help='File to analyse')
     parser.add_argument('-c', '--byte-count', action='store_true', help='print the byte counts')
-    parser.add_argument('-l', '--lines', action='store_true', help='print the byte counts')
-    parser.add_argument('-w', '--words', action='store_true', help='print the byte counts')
-    parser.add_argument('-m', '--characters', action='store_true', help='print the byte counts')
+    parser.add_argument('-l', '--lines', action='store_true', help='print the newline counts')
+    parser.add_argument('-w', '--words', action='store_true', help='print the word counts')
+    parser.add_argument('-m', '--characters', action='store_true', help='print the character counts')
 
     args = parser.parse_args()
 
