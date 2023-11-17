@@ -35,7 +35,7 @@ def wc(filename, option=None):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Custom Word Count Tool")
+    parser = argparse.ArgumentParser(prog='ccwc', description="Custom Word Count Tool")
     parser.add_argument('filename', help='File to analyse')
     parser.add_argument('-c', '--byte-count', action='store_true', help='print the byte counts')
     parser.add_argument('-l', '--lines', action='store_true', help='print the newline counts')
