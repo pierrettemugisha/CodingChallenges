@@ -29,7 +29,7 @@ def wc(content, filename=None, option=None):
 
 
 def main():
-    parser = argparse.ArgumentParser(prog='ccwc', description="Custom Word Count Tool")
+    parser = argparse.ArgumentParser(prog='CodingChallenges', description="Custom Word Count Tool")
     parser.add_argument('filename', nargs='?', help='File to analyse')
     parser.add_argument('-c', '--byte-count', action='store_true', help='print the byte counts')
     parser.add_argument('-l', '--lines', action='store_true', help='print the newline counts')
