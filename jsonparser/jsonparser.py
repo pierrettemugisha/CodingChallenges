@@ -1,24 +1,24 @@
 class JSONLexer:
     def __init__(self, input_string):
-        self.sinput = input_string
-        self.pos = 0
+        self.input_string = input_string
+        self.position = 0
 
     def get_next_token(self):
-        while self.pos < len(self.sinput):
-            current_char = self.sinput[self.pos]
+        while self.position < len(self.input_string):
+            current_char = self.input_string[self.position]
 
             if current_char.isspace():
-                self.pos += 1
+                self.position += 1
                 continue
             elif current_char == '{':
-                self.pos += 1
+                self.position += 1
                 return {'type': 'LBRACE', 'value': '{'}
             elif current_char == '}':
-                self.pos += 1
+                self.position += 1
                 return {'type': 'RBRACE', 'value': '}'}
             else:
-                self.pos += 1
                 raise ValueError(f'Invalid character: {current_char}')
+                self.position += 1
 
         return {'type': 'EOF', 'value': None}
 
@@ -28,12 +28,12 @@ class JSONParser:
         self.lexer = lexer
         self.current_token = self.lexer.get_next_token()
 
-    def parser(self):
+    def parse(self):
         if self.current_token['type'] == 'LBRACE':
             self.eat('LBRACE')
             self.eat('RBRACE')
             print(f'Valid JSON')
-            exit(0)
+            # exit(0)
         else:
             print(f'Invalid JSON')
             exit(1)
@@ -49,13 +49,20 @@ def json_parser(input_string):
     try:
         lexer = JSONLexer(input_string)
         parser = JSONParser(lexer)
-        parser.parser()
+        parser.parse()
     except Exception as ex:
         print(f'An error occurred: {ex}')
 
 
 def main():
-    json_parser('{')
+    valid_json = '{}'
+    invalid_json = '{'
+
+    print("Parsing valid JSON:")
+    json_parser(valid_json)
+
+    print("\nParsing invalid JSON:")
+    json_parser(invalid_json)
 
 
 if __name__ == "__main__":
