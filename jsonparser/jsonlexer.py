@@ -7,6 +7,9 @@ class JSONLexer:
         self.token_specification = [
             ('LBRACE', r'\{'),
             ('RBRACE', r'\}'),
+            ('STRING', r'"(\\.|[^"\\])*"'),
+            ('COLON', r':'),
+            ('COMMA', r','),
             ('WHITESPACE', r'\s+'),
         ]
         self.token_regex = '|'.join(f'(?P<{pair[0]}>{pair[1]})' for pair in self.token_specification)

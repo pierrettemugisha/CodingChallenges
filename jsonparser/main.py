@@ -3,7 +3,7 @@ from jsonparser import JSONParser
 
 
 def main():
-    json_string = '{}'
+    json_string = '{"key": "value"}'
     lexer = JSONLexer(json_string)
     tokens = lexer.tokenize()
     parser = JSONParser(tokens)
