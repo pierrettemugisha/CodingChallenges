@@ -53,5 +53,21 @@ class JSONParser:
         elif token == 'NULL':
             self.pos += 1
             return None
+        elif token == 'LBRACE':
+            self.pos += 1
+            return self.object()
+        elif token == 'LBACK':
+            self.pos += 1
+            return self.array()
         else:
             raise ValueError(f'Unexpected token: {token}')
+
+    def array(self):
+        arr = []
+        self.pos += 1  # skip '['
+        while self.tokens[self.pos][0] == 'RBACK':
+            arr.append(self.value())
+            if self.tokens[self.pos][0] == 'COMMA':
+                self.pos += 1  # skip ','
+        self.pos += 1  # skip ']'
+        return arr

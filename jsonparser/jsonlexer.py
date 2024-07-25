@@ -7,6 +7,8 @@ class JSONLexer:
         self.token_specification = [
             ('LBRACE', r'\{'),
             ('RBRACE', r'\}'),
+            ('LBACK', r'\['),
+            ('RBACK', r'\]'),
             ('STRING', r'"(\\.|[^"\\])*"'),
             ('NUMBER', r'-?\d+(\.\d*)?([eE][+-]?\d+)?'),
             ('TRUE', r'true'),
