@@ -118,7 +118,7 @@ def main():
     parser = argparse.ArgumentParser(prog='CustomCWTool', description="Custom Word Count Tool")
     parser.add_argument('filename', nargs='*', help='Files or directories to analyze')
     parser.add_argument('-c', '--byte-count', action='store_true', help='print the byte count')
-    parser.add_argument('-l', '--lines', action='store_true', help='print the newline count')
+    parser.add_argument('-l', '--lines', action='store_true', help='print the lines count')
     parser.add_argument('-w', '--words', action='store_true', help='print the word count')
     parser.add_argument('-m', '--characters', action='store_true', help='print the character count')
     parser.add_argument('-t', '--file-type', help='specify the file type (json, csv, xml)')
